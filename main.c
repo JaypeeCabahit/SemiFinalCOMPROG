@@ -1,4 +1,4 @@
-// main.c
+/* main.c */
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -42,6 +42,9 @@ int main() {
     int year;
     int subjects;
     float amountTendered;
+    
+    printf("University of Cebu – Main Campus\n");
+    printf("Student's Accounting System\n\n");
 
     /* get and validate student id */
     do {
