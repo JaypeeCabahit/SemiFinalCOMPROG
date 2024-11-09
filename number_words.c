@@ -1,4 +1,4 @@
-// number_words.c
+/* number_words.c */
 #include <string.h>
 #include "number_words.h"
 
