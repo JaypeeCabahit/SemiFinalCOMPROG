@@ -1,4 +1,4 @@
-// number_words.h
+/* number_words.h */
 #ifndef NUMBER_WORDS_H
 #define NUMBER_WORDS_H
 
@@ -12,4 +12,4 @@ extern char *thousands[];
 void convertThreeDigit(int num, char *output);
 void convertToWords(int num, char *output);
 
-#endif // NUMBER_WORDS_H
+#endif
