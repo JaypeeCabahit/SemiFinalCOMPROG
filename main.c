@@ -7,7 +7,7 @@
 #define MAX_STUDENT_ID_LEN 15
 #define MAX_NAME_LEN 15
 
-/* to check if a string contains only digits */
+/* Function to check if a string contains only digits */
 int isDigitsOnly(char str[]) {
     for (int i = 0; i < strlen(str); i++) {
         if (!isdigit(str[i])) {
@@ -17,7 +17,7 @@ int isDigitsOnly(char str[]) {
     return 1;
 }
 
-/* to check if a string contains only letters */
+/* Function to check if a string contains only letters */
 int isLettersOnly(char str[]) {
     for (int i = 0; i < strlen(str); i++) {
         if (!isalpha(str[i])) {
@@ -27,9 +27,18 @@ int isLettersOnly(char str[]) {
     return 1;
 }
 
+/* Function to clear the input buffer */
 void clearInputBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
+}
+
+/* Function to capitalize the first letter and lowercase the rest */
+void capitalizeFirstLetter(char str[]) {
+    str[0] = toupper(str[0]);
+    for (int i = 1; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);
+    }
 }
 
 int main() {
@@ -66,6 +75,7 @@ int main() {
             printf("Error: First Name should contain letters only.\n");
         }
     } while (strlen(first_name) > MAX_NAME_LEN || !isLettersOnly(first_name));
+    capitalizeFirstLetter(first_name); // Ensure proper capitalization for display
 
     /* get and validate last name */
     do {
@@ -77,15 +87,24 @@ int main() {
             printf("Error: Last Name should contain letters only.\n");
         }
     } while (strlen(last_name) > MAX_NAME_LEN || !isLettersOnly(last_name));
+    capitalizeFirstLetter(last_name); // Ensure proper capitalization for display
 
     /* get and validate gender */
     int validGender = 0;
     do {
         printf("Enter Gender (Female, Male, Gay, Lesbian): ");
         scanf("%s", gender);
-        if (strcmp(gender, "Female") == 0 || strcmp(gender, "Male") == 0 ||
-            strcmp(gender, "Gay") == 0 || strcmp(gender, "Lesbian") == 0) {
+        
+        /* Convert input to lowercase for case-insensitive comparison */
+        for (int i = 0; gender[i]; i++) {
+            gender[i] = tolower(gender[i]);
+        }
+
+        /* Check if the gender matches any valid option */
+        if (strcmp(gender, "female") == 0 || strcmp(gender, "male") == 0 ||
+            strcmp(gender, "gay") == 0 || strcmp(gender, "lesbian") == 0) {
             validGender = 1;
+            capitalizeFirstLetter(gender); // Ensure proper capitalization
         } else {
             printf("Error: Please enter a valid gender (Female, Male, Gay, Lesbian).\n");
         }
